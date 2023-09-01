@@ -1,0 +1,57 @@
+def decimal_to_binary(number):
+    # write your code here
+    ten = 1
+    remainder = 0
+    result = 0
+    while (number) != 0 : #loop till number is 0
+        remainder = number % 2 #gets remainder
+        number = number//2 # divide the number by 2 to update the loop 
+        result = result + (remainder * ten) #remainderr x placevalue
+        ten = ten * 10 # update the placevalue
+         
+    return result
+      
+#print(decimal_to_binary(num))  
+
+def binary_addition(x,y):
+    #write your code here
+    a = str(decimal_to_binary(x))
+    b = str(decimal_to_binary(y))
+    
+    newA = a
+    newB = b
+    answer = ""
+
+    mSize = 0
+    size = 0
+    if len(a) <= len(b):
+        size = len(b)
+        mSize = len(b) - len(a)
+        for i in range(0,mSize):
+            newA = "0" + newA
+            
+    elif len(a) > len(b):
+        size = len(a)
+        mSize = len(a) - len(b)
+        
+        for i in range(0,mSize):
+            newB = "0" + newB   
+            
+    #print(newA)
+    #print(newB)
+
+    rem = 0
+    for i in range(size - 1, -1, -1):
+        summ = int(newA[i]) + int(newB [i]) + rem
+        # remove decimals from output
+        rem = int(summ / 2)
+        answer = str(summ - 2 * rem) + answer
+
+    if rem:
+        answer = "1" + answer
+
+    
+
+    return answer
+
+#print(binary_addition(24,98))
