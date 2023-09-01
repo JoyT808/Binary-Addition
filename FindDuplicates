@@ -1,0 +1,28 @@
+def find_duplicates(list_of_integers):
+    list_of_duplicates = [] 
+    
+    temp = [0]*len(list_of_integers)
+   
+    for i in range (0, len(list_of_integers)): #loop through array
+        temp[ list_of_integers[i] -1 ] = temp[list_of_integers[i]-1] +1; # count how many 
+        
+    #print(temp)  
+    
+    for i in range(0, len(temp)):
+        #print("test")
+        #print(temp[i])
+        
+        # record which numbers appeared 2 times or more
+        if (temp[i]) > 1: 
+            list_of_duplicates.append(i+1)
+
+    return list_of_duplicates
+
+# Test your code
+print()
+print("these numbers have duplicates")
+print("Test #1 : ")
+print(find_duplicates([1,5,3,5,6,2,1]))
+print()
+print("test #2 : ")
+print(find_duplicates([2,5,3,6,3,3,4,6,7,14,14,8,3,5,12,5]))
